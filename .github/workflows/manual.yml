@@ -6,7 +6,7 @@ on:
       environment:
         description: "Env to use"
         required: true
-        type: environment
+        type: string
   workflow_call:
     inputs:
       environment:
