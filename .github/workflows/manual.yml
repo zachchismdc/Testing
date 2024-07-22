@@ -7,6 +7,13 @@ on:
         description: 'Env to use'
         required: true
         type: environment
+  workflow_call:
+      inputs:
+        environment:
+          description: 'Env to use'
+          required: true
+          default: "develop"
+          type: string
 
 jobs:
   test:
