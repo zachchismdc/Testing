@@ -4,27 +4,29 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Env to use'
+        description: "Env to use"
         required: true
         type: environment
   workflow_call:
-      inputs:
-        environment:
-          description: 'Env to use'
-          required: true
-          default: "develop"
-          type: string
+    inputs:
+      environment:
+        description: "Env to use"
+        required: true
+        default: develop
+        type: string
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: debug
+        run: echo ${{ inputs.environment }}
 
-    - name: test1
-      run: echo "duplo env"
-      if: >
-        (startsWith( inputs.environment, 'duplo'))
+      - name: test1
+        run: echo "duplo env"
+        if: >
+          (startsWith( inputs.environment, 'duplo'))
 
-    - name: test2
-      run: echo "not duplo env"
-      if: (!startsWith( inputs.environment, 'duplo'))
+      - name: test2
+        run: echo "not duplo env"
+        if: (!startsWith( inputs.environment, 'duplo'))
