@@ -1,0 +1,23 @@
+name: Manual workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Env to use'
+        required: true
+        type: environment
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: test1
+      run: echo "duplo env"
+      if: >
+        (startsWith( inputs.environment, 'duplo'))
+
+    - name: test2
+      run: echo "not duplo env"
+      if: (!startsWith( inputs.environment, 'duplo'))
